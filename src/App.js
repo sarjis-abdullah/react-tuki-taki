@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './landingPage/Navbar'
+import Navbar from './components/landingPage/Navbar'
 import { BrowserRouter } from 'react-router-dom'
 function App() {
   return (

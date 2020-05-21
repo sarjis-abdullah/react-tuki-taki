@@ -9,12 +9,12 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { Button } from '@material-ui/core';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import SignInLinks from './SignInLinks'
 import SignOutLinks from './SignOutLinks'
 const useStyles = makeStyles((theme) => ({
@@ -176,12 +176,19 @@ export default function PrimarySearchAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        <Link to="/" className="bg-black">TUKI-TAKI</Link>
+                        <Link to="/" className="">TUKI-TAKI</Link>
                     </Typography>
 
                     <div className={classes.grow} />
-                    <SignInLinks/>
-                    <SignOutLinks/>
+                    <NavLink to="dashboard">
+                        <Button color="inherit">
+                            <span style={{color: 'white'}}>
+                            Dashboard
+                            </span>
+                        </Button>
+                    </NavLink>
+                    <SignInLinks />
+                    <SignOutLinks />
                     <div className={classes.sectionDesktop}>
                         <IconButton href="/" aria-label="show 4 new mails" color="inherit">
                             <MailIcon />
@@ -217,6 +224,6 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
-        </div>
+        </div >
     );
 }

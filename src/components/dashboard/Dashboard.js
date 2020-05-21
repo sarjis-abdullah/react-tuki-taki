@@ -2,6 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,21 +19,63 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  media: {
+    height: 140,
+  },
 }));
 
 export default function CenteredGrid() {
   const classes = useStyles();
-
+  const todo = [
+    { title: 'Test Title' },
+    { title: 'Test Title' },
+    { title: 'Test Title' },
+    { title: 'Test Title' },
+  ]
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={8}>
-          <Paper className={classes.paper}>xs=6</Paper>
+      <Grid container spacing={3} style={{ justifyContent: 'center' }}>
+        <Grid item xs={4}>
+          {
+            todo.map((item, index) => {
+              return (
+                <Card key={index} className={classes.root}>
+                  <CardActionArea>
+                    <CardMedia
+                      className={classes.media}
+                      image="https://via.placeholder.com/600/24f355"
+                      title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {item.title}
+                     </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                        across all continents except Antarctica
+                </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      Share
+              </Button>
+                    <Button size="small" color="primary">
+                      Learn More
+              </Button>
+                  </CardActions>
+                </Card>
+
+              )
+            })
+          }
         </Grid>
         <Grid item xs={4}>
-          <Paper className={classes.paper}>xs=6</Paper>
+          <Paper className={classes.paper}>
+            Notifications
+          </Paper>
         </Grid>
       </Grid>
-    </div>
+    </div >
   );
 }

@@ -1,39 +1,39 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { FormControl, InputLabel, OutlinedInput, Grid, Button } from '@material-ui/core';
 
 
 export default function StateTextFields(props) {
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const login = (e) => {
+    const [form, setForm] = React.useState({ name: '', email: '' });
+    const handleChanges = (e) => {
+        const {name, value} = e.target
+        setForm({
+            ...form,
+            [name]: value
+        })
+    }
+    const submit = (e) => {
         e.preventDefault()
-        let isValid = name && name.length && email && email.length
+        let isValid = form.name && form.name.length && form.email && form.email.length
         if (isValid) {
-            const data = {
-                name,
-                email
-            }
-            setName('')
-            setEmail('')
+            console.log(form)
             document.getElementById("loginForm").reset();
-           // e.target.reset()
+            // e.target.reset()
         } else {
             alert('nop')
         }
-
-        // setData(event.target.value);
     };
     return (
         <Grid container spacing={3} style={{ justifyContent: 'center', marginTop: 10 }}>
             <Grid item xs={8}>
-                <form id="loginForm" onSubmit={login}>
+                <form id="loginForm" onSubmit={submit}>
                     <FormControl fullWidth variant="outlined" style={{ marginTop: 5 }}>
                         <InputLabel htmlFor="outlined-adornment-amount">
                             Name
                     </InputLabel>
                         <OutlinedInput
+                            name="name"
                             id="outlined-adornment-amount"
-                            onChange={(e) => { setName(e.target.value) }}
+                            onChange={handleChanges}
                             labelWidth={60}
                         />
                     </FormControl>
@@ -42,8 +42,9 @@ export default function StateTextFields(props) {
                             Email
                     </InputLabel>
                         <OutlinedInput
+                            name="email"
                             id="outlined-adornment-amount"
-                            onChange={(e) => { setEmail(e.target.value) }}
+                            onChange={handleChanges}
                             labelWidth={60}
                         />
                     </FormControl>

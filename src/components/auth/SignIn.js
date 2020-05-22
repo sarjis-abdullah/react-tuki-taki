@@ -13,7 +13,6 @@ export default function StateTextFields(props) {
                 name,
                 email
             }
-            console.log(data)
             setName('')
             setEmail('')
             document.getElementById("loginForm").reset();

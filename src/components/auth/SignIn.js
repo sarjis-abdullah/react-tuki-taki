@@ -1,18 +1,11 @@
 import React from 'react';
 import { FormControl, InputLabel, OutlinedInput, Grid, Button } from '@material-ui/core';
-
+import useForm from './UseForm'
 
 export default function StateTextFields(props) {
-    const [form, setForm] = React.useState({ name: '', email: '' });
-    const handleChanges = (e) => {
-        const {name, value} = e.target
-        setForm({
-            ...form,
-            [name]: value
-        })
-    }
-    const submit = (e) => {
-        e.preventDefault()
+    const {form, handleChanges, handleSubmit} = useForm(submit)
+    function submit() {
+        
         let isValid = form.name && form.name.length && form.email && form.email.length
         if (isValid) {
             console.log(form)
@@ -25,7 +18,7 @@ export default function StateTextFields(props) {
     return (
         <Grid container spacing={3} style={{ justifyContent: 'center', marginTop: 10 }}>
             <Grid item xs={8}>
-                <form id="loginForm" onSubmit={submit}>
+                <form id="loginForm" onSubmit={handleSubmit}>
                     <FormControl fullWidth variant="outlined" style={{ marginTop: 5 }}>
                         <InputLabel htmlFor="outlined-adornment-amount">
                             Name

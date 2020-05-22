@@ -14,7 +14,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Button } from '@material-ui/core';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { Link, NavLink } from 'react-router-dom'
+import { Link as RouterLink, NavLink } from 'react-router-dom'
 import SignInLinks from './SignInLinks'
 import SignOutLinks from './SignOutLinks'
 const useStyles = makeStyles((theme) => ({
@@ -176,7 +176,7 @@ export default function PrimarySearchAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        <Link to="/" className="">TUKI-TAKI</Link>
+                        <RouterLink to="/" style={{textDecoration:'none', color:'white'}}>TUKI-TAKI</RouterLink>
                     </Typography>
 
                     <div className={classes.grow} />

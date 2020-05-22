@@ -10,6 +10,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/dashboard" component={Dashboard}></Route>
+          <Route exact path="/" component={Dashboard}></Route>
           <Route path="/project/:id" component={Project}></Route>
         </Switch>
       </div>

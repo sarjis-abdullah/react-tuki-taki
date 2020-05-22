@@ -12,7 +12,7 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
+import { Link as RouterLink } from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
 	root: {
 		maxWidth: 345,
@@ -41,20 +41,17 @@ export default function RecipeReviewCard() {
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
-			<CardHeader
-				avatar={
-					<Avatar aria-label="recipe" className={classes.avatar}>
-						R
+			<RouterLink to="project/1" style={{textDecoration:'none'}}>
+				<CardHeader
+					avatar={
+						<Avatar aria-label="recipe" className={classes.avatar}>
+							R
           </Avatar>
-				}
-				action={
-					<IconButton aria-label="settings">
-						<MoreVertIcon />
-					</IconButton>
-				}
-				title="Shrimp and Chorizo Paella"
-				subheader="September 14, 2016"
-			/>
+					}
+					title="Shrimp and Chorizo Paella"
+					subheader="September 14, 2016"
+				/>
+			</RouterLink>
 			<CardContent>
 				<Typography variant="body2" color="textSecondary" component="p">
 					This impressive paella is a perfect party dish and a fun meal to cook together with your

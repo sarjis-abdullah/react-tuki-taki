@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function RecipeReviewCard() {
+const RecipeReviewCard = (props)=> {
 	const classes = useStyles();
 	return (
 		<Grid container spacing={3} style={{ justifyContent: 'center' }}>
@@ -73,3 +73,4 @@ export default function RecipeReviewCard() {
 		</Grid>
 	);
 }
+export default RecipeReviewCard

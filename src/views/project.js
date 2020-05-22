@@ -1,9 +1,9 @@
 import React from 'react'
 import ProjectDetails from '../components/projects/ProjectDetails'
-const Details = () => {
+const Details = (props) => {
     return (
         <div>
-            <ProjectDetails/>
+            <ProjectDetails props={props}/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useForm = (submit, validate) => {
+const UseForm = (submit, validate) => {
 	let formData = { name: '', email: '' }
 	const [form, setForm] = React.useState(formData);
 	const [errors, setErrors] = React.useState({});
@@ -30,4 +30,4 @@ const useForm = (submit, validate) => {
 		errors
 	}
 }
-export default useForm
+export default UseForm

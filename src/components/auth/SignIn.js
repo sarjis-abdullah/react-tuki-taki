@@ -1,26 +1,10 @@
 import React from 'react';
 import { FormControl, InputLabel, OutlinedInput, Grid, Button } from '@material-ui/core';
-import useForm from './UseForm'
-
+import UseForm from './UseForm'
+import validate from '../../util/validateLogin'
 export default function StateTextFields(props) {
-    const validate = (values) => {
-        let { name, email } = values
-        let errors = {}
-        if (!email) {
-            errors.email = 'Email is required'
-        } else {
-            let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            let valid = re.test(email.toLowerCase());
-            if (!valid) errors.email = 'Email is invalid';
-        }
-        if (!name) {
-            errors.name = 'Name is required'
-        } else if (name.length < 3) {
-            errors.name = 'Minimum 4 letter'
-        }
-        return errors
-    }
-    const { form, handleChanges, handleSubmit, errors } = useForm(submit, validate)
+    
+    const { form, handleChanges, handleSubmit, errors } = UseForm(submit, validate)
     function submit() {
         console.log(form)
            // document.getElementById("loginForm").reset();

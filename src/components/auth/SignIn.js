@@ -3,13 +3,12 @@ import { FormControl, InputLabel, OutlinedInput, Grid, Button } from '@material-
 import UseForm from './UseForm'
 import validate from '../../util/validateLogin'
 export default function StateTextFields(props) {
-    
-    const { form, handleChanges, handleSubmit, errors } = UseForm(submit, validate)
+    let formData = { name: '', email: '', password: '', cPassword: '' }
+    const { form, handleChanges, handleSubmit, errors } = UseForm(submit, formData, validate)
     function submit() {
         console.log(form)
-           // document.getElementById("loginForm").reset();
-            // e.target.reset()
-        
+        // document.getElementById("loginForm").reset();
+        // e.target.reset()
     };
 
     return (
@@ -40,6 +39,31 @@ export default function StateTextFields(props) {
                         />
                         {errors.email && <p>{errors.email}</p>}
                     </FormControl>
+                    <FormControl fullWidth variant="outlined" style={{ marginTop: 5 }}>
+                        <InputLabel htmlFor="outlined-adornment-amount">
+                            Password
+                    </InputLabel>
+                        <OutlinedInput
+                            name="password"
+                            type="password"
+                            onChange={handleChanges}
+                            labelWidth={60}
+                        />
+                        {errors.password && <p>{errors.password}</p>}
+                    </FormControl>
+                    <FormControl fullWidth variant="outlined" style={{ marginTop: 5 }}>
+                        <InputLabel htmlFor="outlined-adornment-amount">
+                            Confirm Password
+                    </InputLabel>
+                        <OutlinedInput
+                            name="cPassword"
+                            type="password"
+                            onChange={handleChanges}
+                            labelWidth={60}
+                        />
+                        {errors.isPasswordSame && <p>{errors.isPasswordSame}</p>}
+                    </FormControl>
+
                     <Button type="submit" variant="contained" color="primary">
                         Login
                     </Button>

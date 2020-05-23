@@ -5,6 +5,7 @@ import Dashboard from './views/dashboard'
 import Project from './views/project'
 import SignIn from './views/signin'
 import Signup from './views/signup'
+import CreatePrject from './views/create-project'
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/project/:id" component={Project}></Route>
           <Route path="/signin" component={SignIn}></Route>
           <Route path="/signup" component={Signup}></Route>
+          <Route path="/create-project" component={CreatePrject}></Route>
         </Switch>
       </div>
     </BrowserRouter>

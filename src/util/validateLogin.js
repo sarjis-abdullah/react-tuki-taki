@@ -1,5 +1,5 @@
 export default function validate (values) {
-    let { name, email } = values
+    let { name, email, password, cPassword } = values
     let errors = {}
     if (!email) {
         errors.email = 'Email is required'
@@ -12,6 +12,18 @@ export default function validate (values) {
         errors.name = 'Name is required'
     } else if (name.length < 3) {
         errors.name = 'Minimum 4 letter'
+    }
+    if (!password) {
+        errors.password = 'Password is required'
+    } else if (password.length < 3) {
+        errors.password = 'Minimum 3 letter'
+    }
+    if (!cPassword) {
+        errors.isPasswordSame = 'Confirm password is required'
+    } else if (cPassword.length < 3) {
+        errors.isPasswordSame = 'Minimum 3 letter'
+    } else if (cPassword !== password) {
+        errors.isPasswordSame = 'password and confirmed password does not match'
     }
     return errors
 }

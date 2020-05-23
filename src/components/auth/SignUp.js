@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormControl, InputLabel, OutlinedInput, Grid, Button } from '@material-ui/core';
-import UseForm from './UseForm'
+import UseForm from '../hooks/UseForm'
 import validate from '../../util/validateLogin'
 export default function StateTextFields(props) {
     let formData = { name: '', email: '' }

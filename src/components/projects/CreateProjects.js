@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux'
 import { FormControl, InputLabel, OutlinedInput, Grid, Button } from '@material-ui/core';
 import UseForm from '../hooks/UseForm'
 import validate from '../../util/validateCreateProject'
+import { createProject } from '../../store/actions/projectActions'
 export default function StateTextFields(props) {
     const dispatch = useDispatch()
     //let formData = { name: '', email: '', password: '', cPassword: '' }
     let formData = { name: '' }
     const { form, handleChanges, handleSubmit, errors } = UseForm(submit, formData, validate)
     function submit() {
-        console.log(form)
-       // console.log(dispatch)
+       createProject({type:'createProject', payload: form, dispatch})
         // document.getElementById("loginForm").reset();
         // e.target.reset()
     };

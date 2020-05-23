@@ -1,6 +1,10 @@
-export default createProject = (project) => {
-    return (dispatch, getState) => {
-        // database call
-        dispatch({ type: 'createProject', payload: project })
-    }
+export const createProject = (project) => {
+	let { type, dispatch, payload } = project
+	const data = {
+		id: Date.now(),
+		name: 'Sarjis',
+		email: '',
+		title: payload.name
+	}
+	dispatch({ type, data })
 }

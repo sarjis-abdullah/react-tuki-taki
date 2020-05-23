@@ -25,6 +25,7 @@ const UseForm = (submit, formData, validate) => {
 		e.preventDefault()
 		setErrors(validate(form))
 		setIsSubmitting(true)
+		e.target.reset()
 	}
 	React.useEffect(() => {
 		if (!Object.keys(errors).length && isSubmitting) {

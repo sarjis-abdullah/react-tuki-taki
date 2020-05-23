@@ -1,7 +1,7 @@
 import React from 'react'
 
-const UseForm = (submit, validate) => {
-	let formData = { name: '', email: '' }
+const UseForm = (submit, formData, validate) => {
+	
 	const [form, setForm] = React.useState(formData);
 	const [errors, setErrors] = React.useState({});
 	const [isSubmitting, setIsSubmitting] = React.useState(false);

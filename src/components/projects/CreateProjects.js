@@ -1,12 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import { FormControl, InputLabel, OutlinedInput, Grid, Button } from '@material-ui/core';
 import UseForm from '../hooks/UseForm'
-import validate from '../../util/validateLogin'
+import validate from '../../util/validateCreateProject'
 export default function StateTextFields(props) {
-    let formData = { name: '', email: '', password: '', cPassword: '' }
+    const dispatch = useDispatch()
+    //let formData = { name: '', email: '', password: '', cPassword: '' }
+    let formData = { name: '' }
     const { form, handleChanges, handleSubmit, errors } = UseForm(submit, formData, validate)
     function submit() {
         console.log(form)
+       // console.log(dispatch)
         // document.getElementById("loginForm").reset();
         // e.target.reset()
     };
@@ -14,7 +18,7 @@ export default function StateTextFields(props) {
     return (
         <Grid container spacing={3} style={{ justifyContent: 'center', marginTop: 10 }}>
             <Grid item xs={8}>
-                <form id="loginForm" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <FormControl fullWidth variant="outlined" style={{ marginTop: 5 }}>
                         <InputLabel htmlFor="outlined-adornment-amount">
                             Name
@@ -28,7 +32,7 @@ export default function StateTextFields(props) {
                         />
                         {errors.name && <p>{errors.name}</p>}
                     </FormControl>
-                    <FormControl fullWidth variant="outlined" style={{ marginTop: 5 }}>
+                    {/* <FormControl fullWidth variant="outlined" style={{ marginTop: 5 }}>
                         <InputLabel htmlFor="outlined-adornment-amount">
                             Email
                     </InputLabel>
@@ -63,7 +67,7 @@ export default function StateTextFields(props) {
                             labelWidth={60}
                         />
                         {errors.isPasswordSame && <p>{errors.isPasswordSame}</p>}
-                    </FormControl>
+                    </FormControl> */}
 
                     <Button type="submit" variant="contained" color="primary">
                         Login

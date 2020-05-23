@@ -2,19 +2,15 @@ import React from 'react';
 import ProjectSummary from './ProjectSummary'
 
 
-export default function CenteredGrid() {
-    const todo = [
-        { title: 'Test Title' },
-        { title: 'Test Title' },
-        { title: 'Test Title' },
-        { title: 'Test Title' },
-    ]
+export default function CenteredGrid(props) {
+    let projects = props.projects.projects
     return (
         <div>
-            <ProjectSummary/>
-            <ProjectSummary/>
-            <ProjectSummary/>
-            <ProjectSummary/>
+            {projects && projects.map(item=> {
+                return (
+                    <ProjectSummary project={item} key={item.id}/>
+                )
+            })}
         </div >
     );
 }

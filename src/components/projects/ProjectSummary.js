@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function RecipeReviewCard() {
+export default function ProjectSummary({project}) {
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
@@ -48,14 +48,13 @@ export default function RecipeReviewCard() {
 							R
           </Avatar>
 					}
-					title="Shrimp and Chorizo Paella"
+					title={project.name}
 					subheader="September 14, 2016"
 				/>
 			</RouterLink>
 			<CardContent>
 				<Typography variant="body2" color="textSecondary" component="p">
-					This impressive paella is a perfect party dish and a fun meal to cook together with your
-					guests. Add 1 cup of frozen peas along with the mussels, if you like.
+					{project.title}
         </Typography>
 			</CardContent>
 			<CardActions disableSpacing>

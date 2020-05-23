@@ -5,11 +5,15 @@ const SignOutLinks = () => {
     return (
         <div>
             <Button color="inherit">
-                <RouterLink to="/signin" style={{textDecoration:'none', color:'white'}}>
+                <RouterLink to="/signup" style={{textDecoration:'none', color:'white'}}>
                 Sign up
                 </RouterLink>
             </Button>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit">
+            <RouterLink to="/signin" style={{textDecoration:'none', color:'white'}}>
+                Login
+                </RouterLink>
+            </Button>
         </div>
     )
 }

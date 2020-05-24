@@ -10,10 +10,7 @@ export default function StateTextFields(props) {
     let formData = { name: '' }
     const { form, handleChanges, handleSubmit, errors } = UseForm(submit, formData, validate)
     function submit() {
-        //console.log(props)
-       createProject({type:'createProject', payload: form, dispatch})
-        // document.getElementById("loginForm").reset();
-        // e.target.reset()
+        dispatch(createProject({type:'createProject', payload: form}))
     };
 
     return (

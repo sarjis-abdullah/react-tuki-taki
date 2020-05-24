@@ -11,6 +11,8 @@ const firebaseConfig = {
     appId: "1:558418454982:web:1729cdcff60d5010cdaac7",
     measurementId: "G-51G0050CDM"
   };
-firebase.initializeApp(config);
-firebase.firestore().settings({ timestampsInSnapshots: true });
+//firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const firestore = firebaseApp.firestore();
+//firebase.firestore().settings({ timestampsInSnapshots: true });
 export default firebase 

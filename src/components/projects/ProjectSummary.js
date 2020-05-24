@@ -37,25 +37,25 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function ProjectSummary({project}) {
+export default function ProjectSummary({ project }) {
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
-			<RouterLink to="project/1" style={{textDecoration:'none'}}>
+			<RouterLink to={'project/' + project.id} style={{ textDecoration: 'none' }}>
 				<CardHeader
 					avatar={
 						<Avatar aria-label="recipe" className={classes.avatar}>
 							R
           </Avatar>
 					}
-					title={project.name}
+					title={project.title}
 					subheader="September 14, 2016"
 				/>
 			</RouterLink>
 			<CardContent>
 				<Typography variant="body2" color="textSecondary" component="p">
-					{project.title}
-        </Typography>
+					{project.body}
+				</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
 				<IconButton aria-label="add to favorites">

@@ -11,7 +11,6 @@ export const createProject = (project) => {
   }
 
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    console.log(getState)
     const firestore = getFirestore();
     firestore.collection('projects').add({
       title: payload.name,

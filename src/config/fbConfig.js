@@ -12,7 +12,7 @@ const firebaseConfig = {
     measurementId: "G-51G0050CDM"
   };
 //firebase.initializeApp(firebaseConfig);
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-export const firestore = firebaseApp.firestore();
+firebase.initializeApp(firebaseConfig);
+
 //firebase.firestore().settings({ timestampsInSnapshots: true });
 export default firebase 

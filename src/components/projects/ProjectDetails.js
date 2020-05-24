@@ -13,6 +13,9 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -38,8 +41,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const RecipeReviewCard = (props)=> {
+const RecipeReviewCard = (props) => {
 	const classes = useStyles();
+	let id = props.props.match.params.id
+	let project = useSelector(state => {
+		if (state.firestore.data && state.firestore.data.projects) {
+			return state.firestore.data.projects[id]
+		}
+	})
+	if (id && project) {
 	return (
 		<Grid container spacing={3} style={{ justifyContent: 'center' }}>
 			<Grid item xs={8}>
@@ -50,14 +60,13 @@ const RecipeReviewCard = (props)=> {
 								R
           		</Avatar>
 						}
-						title="Shrimp and Chorizo Paella"
+						title={project.title}
 						subheader="September 14, 2016"
 					/>
 					<CardContent>
 						<Typography variant="body2" color="textSecondary" component="p">
-							This impressive paella is a perfect party dish and a fun meal to cook together with your
-							guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        		</Typography>
+							{project.body}
+						</Typography>
 					</CardContent>
 					<CardActions disableSpacing>
 						<IconButton aria-label="add to favorites">
@@ -72,5 +81,13 @@ const RecipeReviewCard = (props)=> {
 			</Grid>
 		</Grid>
 	);
+	} else {
+		return <p>No Data found</p>
+	}
+	
 }
-export default RecipeReviewCard
+export default compose(firestoreConnect([
+	{
+		collection: 'projects'
+	}
+]))(RecipeReviewCard)
